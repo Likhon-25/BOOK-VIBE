@@ -1,7 +1,45 @@
+import { Link, NavLink } from "react-router";
+
 const Navbar = () => {
+  const links = (
+    <>
+      <li>
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            ` font-semibold mr-1 ${isActive ? "text-green-500 border border-green-500" : ""}`
+          }
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/books"
+          className={({ isActive }) =>
+            ` font-semibold mr-1 ${isActive ? "text-green-500 border border-green-500" : ""}`
+          }
+        >
+          Listed Books
+        </NavLink>
+      </li>
+
+      <li>
+        <NavLink
+          to="/page-to-read"
+          className={({ isActive }) =>
+            ` font-semibold mr-1 ${isActive ? "text-green-500 border border-green-500" : ""}`
+          }
+        >
+          Page to Read
+        </NavLink>
+      </li>
+    </>
+  );
+
   return (
-    <div>
-      <div className="navbar bg-base-100 shadow-sm">
+    <div className="max-w-7xl mx-auto">
+      <div className="navbar bg-base-100 shadow-sm py-4">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -12,65 +50,36 @@ const Navbar = () => {
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
-                {" "}
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
+                />
               </svg>
             </div>
             <ul
-              tabIndex="-1"
+              tabIndex={0}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {/* ভেরিয়েবল হিসেবে এভাবে বসাতে হয় */}
+              {links}
             </ul>
           </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <Link to="/" className="font-bold text-2xl">
+            Book Vibe
+          </Link>
         </div>
+
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2 bg-base-100 w-40 z-1">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1 gap-4">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+
+        <div className="navbar-end gap-3">
+          <button className="btn btn-success">Sing In</button>
+
+          <button className="btn btn-info">Sing Up</button>
+
         </div>
       </div>
     </div>
